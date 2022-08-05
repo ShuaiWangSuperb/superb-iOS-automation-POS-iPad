@@ -243,6 +243,7 @@ public class RegressionTest extends RegressionClass {
         clearSelectTable(2);
         selectTable(2);
         checkTable(2);
+        clickMoreButton();
         clickReturnButton();
         clickEnterReturnModeButton();
         checkReturnModeStatus();

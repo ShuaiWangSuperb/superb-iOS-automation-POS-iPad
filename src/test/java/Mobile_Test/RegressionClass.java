@@ -243,8 +243,8 @@ public class RegressionClass extends Utils{
     }
 
     public void clickQARegisterUser() {
-        utils.scriptWait(15);
-        utils.wait(10);
+        utils.scriptWait(20);
+        utils.wait(20);
         try {
             if (utils.getElementByXpath(loginPage.getQARegisterUserButton_XPATH()).isDisplayed()
                     &&utils.getElementByXpath(loginPage.getQARegisterUser1Button_XPATH()).isDisplayed()
@@ -497,13 +497,14 @@ public class RegressionClass extends Utils{
 
     public void selectTable(int tableNumber) {
         utils.scriptWait(20);
-//        utils.wait(30);
+        utils.wait(30);
         try {
             String tableLocator = tablePage.getTable_XPATH_first();
             String tableLocator1 = tablePage.getTable_XPATH_second();
             if (utils.getElementByXpath(tableLocator+tableNumber+tableLocator1).isDisplayed()
                     &&utils.getElementByXpath(tablePage.getRefreshIcon_XPATH()).isDisplayed()
                     &&utils.getElementByXpath(tablePage.getTableView_XPATH()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByXpath(tableLocator+tableNumber+tableLocator1).click();
                 System.out.println("select table " + tableNumber);
             }
@@ -692,6 +693,7 @@ public class RegressionClass extends Utils{
                 getTableBillList();
                 clickClearTableButton();
                 clickYesButton();
+                utils.scriptWait(3);
                 clickAddToTableButton();
                 System.out.println("Clear table done now table bill is zero");
                 utils.scriptWait(1);
@@ -931,11 +933,10 @@ public class RegressionClass extends Utils{
     }
 
     public void clickPrintBillButton() {
-        utils.scriptWait(20);
-        utils.wait(20);
+        utils.wait(10);
         try {
-            if (utils.getElementByXpath(billToolPage.getPrintBillButton_XPATH()).isDisplayed()
-                    &&utils.getElementByXpath(billToolPage.getReturnButton_XPATH()).isDisplayed()){
+            if (utils.getElementByXpath(billToolPage.getPrintBillButton_XPATH()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByXpath(billToolPage.getPrintBillButton_XPATH()).click();
                 System.out.println("click Print Bill Button");
             }else{
@@ -975,10 +976,9 @@ public class RegressionClass extends Utils{
 
     public void clickReturnButton() {
         utils.scriptWait(5);
-        utils.wait(20);
         try {
-            if (utils.getElementByXpath(billToolPage.getReturnButton_XPATH()).isDisplayed()
-                    &&utils.getElementByXpath(billToolPage.getPrintBillButton_XPATH()).isDisplayed()){
+            if (utils.getElementByXpath(billToolPage.getReturnButton_XPATH()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByXpath(billToolPage.getReturnButton_XPATH()).click();
                 System.out.println("click Return Button");
             }else
@@ -986,6 +986,22 @@ public class RegressionClass extends Utils{
         } catch (Exception exp) {
             System.out.println("\nclick Return Button ERROR " + exp.getCause());
             System.out.println("\nclick Return Button ERROR " + exp.getMessage());
+        }
+    }
+
+    public void clickMoreButton() {
+        utils.scriptWait(5);
+        utils.wait(20);
+        try {
+            if (utils.getElementByXpath(billToolPage.getMoreButton_XPATH()).isDisplayed()){
+                utils.scriptWait(5);
+                utils.getElementByXpath(billToolPage.getMoreButton_XPATH()).click();
+                System.out.println("click More Button");
+            }else
+                System.out.println("click More Button not found");
+        } catch (Exception exp) {
+            System.out.println("\nclick More Button ERROR " + exp.getCause());
+            System.out.println("\nclick More Button ERROR " + exp.getMessage());
         }
     }
 
@@ -1023,9 +1039,8 @@ public class RegressionClass extends Utils{
     public void clickDiscountButton() {
         utils.scriptWait(10);
         try {
-            if (utils.getElementByXpath(billToolPage.getDiscountButton_XPATH()).isDisplayed()
-                    &&utils.getElementByXpath(billToolPage.getPrintBillButton_XPATH()).isDisplayed()
-                    &&utils.getElementByXpath(billToolPage.getReturnButton_XPATH()).isDisplayed()){
+            if (utils.getElementByXpath(billToolPage.getDiscountButton_XPATH()).isDisplayed()){
+                utils.scriptWait(10);
                 utils.getElementByXpath(billToolPage.getDiscountButton_XPATH()).click();
                 System.out.println("click Discount Button");
             }else
@@ -1041,6 +1056,7 @@ public class RegressionClass extends Utils{
         utils.wait(5);
         try {
             if (utils.getElementByAccessibilityId(billToolPage.getDiscountPCTButton_AI()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByAccessibilityId(billToolPage.getDiscountPCTButton_AI()).click();
                 System.out.println("click PCT button");
             }
@@ -1056,6 +1072,7 @@ public class RegressionClass extends Utils{
         utils.wait(5);
         try {
             if (utils.getElementByAccessibilityId(billToolPage.getDiscountCurrencyButton_AI()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByAccessibilityId(billToolPage.getDiscountCurrencyButton_AI()).click();
                 System.out.println("click currency button");
             }
@@ -1071,6 +1088,7 @@ public class RegressionClass extends Utils{
         utils.wait(5);
         try {
             if (utils.getElementByAccessibilityId(billToolPage.getDiscountPriceButton_AI()).isDisplayed()){
+                utils.scriptWait(5);
                 utils.getElementByAccessibilityId(billToolPage.getDiscountPriceButton_AI()).click();
                 System.out.println("click price button");
             }
@@ -1096,23 +1114,12 @@ public class RegressionClass extends Utils{
         }
     }
 
-    public void clickMoreButton() {
-        try {
-            MobileElement button;
-            button = utils.getElementByXpath(billToolPage.getMoreButton_XPATH());
-            button.click();
-            System.out.println("click More Button");
-        } catch (Exception exp) {
-            System.out.println("\nclick More Button ERROR " + exp.getCause());
-            System.out.println("\nclick More Button ERROR " + exp.getMessage());
-        }
-    }
-
     public void activeSendToKitchen() {
         utils.scriptWait(20);
         utils.wait(20);
         try {
             if (utils.getElementByXpath(billToolPage.getSendToKDSOutline_XPATH()).isDisplayed())
+                utils.scriptWait(5);
                 utils.getElementByXpath(billToolPage.getSendToKDSOutline_XPATH()).click();
             System.out.println("Product send to KDS button click");
         } catch (Exception exp) {
